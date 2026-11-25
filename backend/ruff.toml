@@ -1,0 +1,11 @@
+line-length = 120
+target-version = "py312"
+
+[lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+# B008: FastAPI dependencies are declared as default arguments by design.
+# UP046: pydantic generic models keep the classic Generic[T] form for compatibility.
+ignore = ["S101", "S311", "S105", "S106", "B008", "UP046"]
+
+[lint.per-file-ignores]
+"tests/*" = ["S"]
