@@ -1,0 +1,79 @@
+Nov 24 14:30:04 web-01 sshd[4033]: Failed password for davyd from 192.0.2.10 port 43357 ssh2
+Nov 24 14:33:14 web-01 sshd[4040]: Failed password for davyd from 192.0.2.10 port 48013 ssh2
+Nov 24 14:47:15 web-01 sshd[4020]: Accepted publickey for davyd from 192.0.2.10 port 54335 ssh2: ED25519 SHA256:x19
+Nov 24 15:00:31 web-01 sshd[4010]: Accepted publickey for ci from 192.0.2.12 port 59128 ssh2: ED25519 SHA256:x9
+Nov 24 15:04:19 web-01 sudo:   davyd : TTY=pts/0 ; PWD=/home/davyd ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 24 15:07:09 web-01 sshd[4015]: Accepted publickey for deploy from 192.0.2.11 port 42241 ssh2: ED25519 SHA256:x14
+Nov 24 15:07:53 web-01 sudo:   davyd : TTY=pts/0 ; PWD=/home/davyd ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 24 15:11:02 web-01 sudo:   davyd : TTY=pts/0 ; PWD=/home/davyd ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 24 15:20:46 web-01 sshd[4006]: Accepted publickey for ci from 192.0.2.12 port 58916 ssh2: ED25519 SHA256:x5
+Nov 24 15:28:39 web-01 sshd[4039]: Failed password for davyd from 192.0.2.10 port 44461 ssh2
+Nov 24 16:18:05 web-01 sudo:   davyd : TTY=pts/0 ; PWD=/home/davyd ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 24 17:08:18 web-01 sshd[4036]: Failed password for davyd from 192.0.2.10 port 42565 ssh2
+Nov 24 17:11:21 web-01 sshd[4037]: Failed password for davyd from 192.0.2.10 port 53260 ssh2
+Nov 24 17:18:49 web-01 sshd[4001]: Accepted publickey for deploy from 192.0.2.11 port 51791 ssh2: ED25519 SHA256:x0
+Nov 24 17:30:20 web-01 sshd[4032]: Failed password for davyd from 192.0.2.10 port 47767 ssh2
+Nov 24 17:50:00 web-01 sshd[4050]: Failed password for root from 203.0.113.45 port 50000 ssh2
+Nov 24 17:50:03 web-01 sshd[4051]: Failed password for root from 203.0.113.45 port 50001 ssh2
+Nov 24 17:50:06 web-01 sshd[4052]: Failed password for root from 203.0.113.45 port 50002 ssh2
+Nov 24 17:50:09 web-01 sshd[4053]: Failed password for root from 203.0.113.45 port 50003 ssh2
+Nov 24 17:50:12 web-01 sshd[4054]: Failed password for root from 203.0.113.45 port 50004 ssh2
+Nov 24 17:50:14 web-01 sshd[4013]: Accepted publickey for deploy from 192.0.2.11 port 41757 ssh2: ED25519 SHA256:x12
+Nov 24 17:50:15 web-01 sshd[4055]: Failed password for root from 203.0.113.45 port 50005 ssh2
+Nov 24 17:50:18 web-01 sshd[4056]: Failed password for root from 203.0.113.45 port 50006 ssh2
+Nov 24 17:50:21 web-01 sshd[4057]: Failed password for root from 203.0.113.45 port 50007 ssh2
+Nov 24 17:50:24 web-01 sshd[4058]: Failed password for root from 203.0.113.45 port 50008 ssh2
+Nov 24 17:50:27 web-01 sshd[4059]: Failed password for root from 203.0.113.45 port 50009 ssh2
+Nov 24 17:50:30 web-01 sshd[4060]: Failed password for root from 203.0.113.45 port 50010 ssh2
+Nov 24 17:50:33 web-01 sshd[4061]: Failed password for root from 203.0.113.45 port 50011 ssh2
+Nov 24 17:56:26 web-01 sshd[4008]: Accepted publickey for deploy from 192.0.2.11 port 58634 ssh2: ED25519 SHA256:x7
+Nov 24 18:10:06 web-01 sshd[4016]: Accepted publickey for ci from 192.0.2.12 port 59692 ssh2: ED25519 SHA256:x15
+Nov 24 18:16:23 web-01 sshd[4009]: Accepted publickey for ci from 192.0.2.12 port 57259 ssh2: ED25519 SHA256:x8
+Nov 24 19:03:27 web-01 sshd[4018]: Accepted publickey for deploy from 192.0.2.11 port 52876 ssh2: ED25519 SHA256:x17
+Nov 24 19:16:24 web-01 sshd[4017]: Accepted publickey for davyd from 192.0.2.10 port 55861 ssh2: ED25519 SHA256:x16
+Nov 24 19:30:46 web-01 sshd[4022]: Accepted publickey for deploy from 192.0.2.11 port 42812 ssh2: ED25519 SHA256:x21
+Nov 24 21:06:47 web-01 sshd[4027]: Accepted publickey for deploy from 192.0.2.11 port 59004 ssh2: ED25519 SHA256:x26
+Nov 24 21:56:38 web-01 sudo:   davyd : TTY=pts/0 ; PWD=/home/davyd ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 24 21:57:54 web-01 sudo:   davyd : TTY=pts/0 ; PWD=/home/davyd ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 24 22:25:00 web-01 sshd[4062]: Invalid user admin from 203.0.113.77 port 51000
+Nov 24 22:25:02 web-01 sshd[4063]: Failed password for invalid user admin from 203.0.113.77 port 51000 ssh2
+Nov 24 22:25:35 web-01 sshd[4064]: Invalid user test from 203.0.113.77 port 51001
+Nov 24 22:25:37 web-01 sshd[4065]: Failed password for invalid user test from 203.0.113.77 port 51001 ssh2
+Nov 24 22:26:10 web-01 sshd[4066]: Invalid user oracle from 203.0.113.77 port 51002
+Nov 24 22:26:12 web-01 sshd[4067]: Failed password for invalid user oracle from 203.0.113.77 port 51002 ssh2
+Nov 24 22:26:45 web-01 sshd[4068]: Invalid user ubuntu from 203.0.113.77 port 51003
+Nov 24 22:26:47 web-01 sshd[4069]: Failed password for invalid user ubuntu from 203.0.113.77 port 51003 ssh2
+Nov 24 22:27:20 web-01 sshd[4070]: Invalid user postgres from 203.0.113.77 port 51004
+Nov 24 22:27:22 web-01 sshd[4071]: Failed password for invalid user postgres from 203.0.113.77 port 51004 ssh2
+Nov 24 22:27:55 web-01 sshd[4072]: Invalid user git from 203.0.113.77 port 51005
+Nov 24 22:27:57 web-01 sshd[4073]: Failed password for invalid user git from 203.0.113.77 port 51005 ssh2
+Nov 24 23:08:35 web-01 sshd[4005]: Accepted publickey for davyd from 192.0.2.10 port 57948 ssh2: ED25519 SHA256:x4
+Nov 24 23:12:56 web-01 sshd[4023]: Accepted publickey for davyd from 192.0.2.10 port 49018 ssh2: ED25519 SHA256:x22
+Nov 24 23:55:31 web-01 sshd[4029]: Accepted publickey for davyd from 192.0.2.10 port 55266 ssh2: ED25519 SHA256:x28
+Nov 25 01:14:36 web-01 sudo:   davyd : TTY=pts/0 ; PWD=/home/davyd ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 25 01:22:46 web-01 sshd[4011]: Accepted publickey for davyd from 192.0.2.10 port 44275 ssh2: ED25519 SHA256:x10
+Nov 25 01:32:58 web-01 sshd[4038]: Failed password for davyd from 192.0.2.10 port 41929 ssh2
+Nov 25 01:37:24 web-01 sshd[4025]: Accepted publickey for deploy from 192.0.2.11 port 43725 ssh2: ED25519 SHA256:x24
+Nov 25 03:20:24 web-01 sshd[4026]: Accepted publickey for deploy from 192.0.2.11 port 46962 ssh2: ED25519 SHA256:x25
+Nov 25 03:47:25 web-01 sudo:   davyd : TTY=pts/0 ; PWD=/home/davyd ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 25 04:02:00 web-01 sshd[4074]: Failed password for deploy from 198.51.100.23 port 52000 ssh2
+Nov 25 04:02:20 web-01 sshd[4075]: Failed password for deploy from 198.51.100.23 port 52001 ssh2
+Nov 25 04:02:40 web-01 sshd[4076]: Failed password for deploy from 198.51.100.23 port 52002 ssh2
+Nov 25 04:03:00 web-01 sshd[4077]: Failed password for deploy from 198.51.100.23 port 52003 ssh2
+Nov 25 04:04:00 web-01 sshd[4078]: Accepted password for deploy from 198.51.100.23 port 52010 ssh2
+Nov 25 04:05:30 web-01 sudo:  deploy : TTY=pts/1 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/bash
+Nov 25 04:45:03 web-01 sshd[4003]: Accepted publickey for davyd from 192.0.2.10 port 51572 ssh2: ED25519 SHA256:x2
+Nov 25 05:28:12 web-01 sshd[4007]: Accepted publickey for ci from 192.0.2.12 port 41763 ssh2: ED25519 SHA256:x6
+Nov 25 05:41:59 web-01 sshd[4034]: Failed password for davyd from 192.0.2.10 port 40502 ssh2
+Nov 25 07:01:42 web-01 sudo:   davyd : TTY=pts/0 ; PWD=/home/davyd ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Nov 25 07:28:48 web-01 sshd[4021]: Accepted publickey for deploy from 192.0.2.11 port 54420 ssh2: ED25519 SHA256:x20
+Nov 25 08:09:07 web-01 sshd[4035]: Failed password for davyd from 192.0.2.10 port 46348 ssh2
+Nov 25 08:09:57 web-01 sshd[4024]: Accepted publickey for davyd from 192.0.2.10 port 56524 ssh2: ED25519 SHA256:x23
+Nov 25 08:26:04 web-01 sshd[4002]: Accepted publickey for ci from 192.0.2.12 port 46715 ssh2: ED25519 SHA256:x1
+Nov 25 08:36:35 web-01 sshd[4031]: Failed password for davyd from 192.0.2.10 port 40683 ssh2
+Nov 25 08:37:13 web-01 sshd[4014]: Accepted publickey for ci from 192.0.2.12 port 45097 ssh2: ED25519 SHA256:x13
+Nov 25 08:57:24 web-01 sshd[4012]: Accepted publickey for deploy from 192.0.2.11 port 42569 ssh2: ED25519 SHA256:x11
+Nov 25 09:09:05 web-01 sshd[4004]: Accepted publickey for deploy from 192.0.2.11 port 59811 ssh2: ED25519 SHA256:x3
+Nov 25 09:09:13 web-01 sshd[4019]: Accepted publickey for davyd from 192.0.2.10 port 55375 ssh2: ED25519 SHA256:x18
+Nov 25 09:23:08 web-01 sshd[4028]: Accepted publickey for ci from 192.0.2.12 port 44998 ssh2: ED25519 SHA256:x27
+Nov 25 09:33:21 web-01 sshd[4030]: Accepted publickey for ci from 192.0.2.12 port 56020 ssh2: ED25519 SHA256:x29
