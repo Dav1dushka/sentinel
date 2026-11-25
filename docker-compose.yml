@@ -1,0 +1,89 @@
+# Sentinel: full stack in one command.
+#   cp .env.example .env   (then change the secrets)
+#   docker compose up --build
+# Dashboard: http://localhost:8080   API docs: http://localhost:8000/docs
+#
+# Add live demo traffic (an agent shipping fake attacks every minute):
+#   docker compose --profile demo up --build
+
+x-backend: &backend
+  build: ./backend
+  env_file: .env
+  environment:
+    SENTINEL_DATABASE_URL: postgresql+psycopg://sentinel:${POSTGRES_PASSWORD}@db:5432/sentinel
+    SENTINEL_REDIS_URL: redis://redis:6379/0
+  depends_on:
+    db: { condition: service_healthy }
+    redis: { condition: service_healthy }
+  restart: unless-stopped
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: sentinel
+      POSTGRES_USER: sentinel
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sentinel -d sentinel"]
+      interval: 5s
+      retries: 10
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redisdata:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 10
+    restart: unless-stopped
+
+  api:
+    <<: *backend
+    command: ["uvicorn", "sentinel.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers", "--forwarded-allow-ips", "*"]
+    ports: ["8000:8000"]
+
+  worker:
+    <<: *backend
+    command: ["python", "-m", "sentinel.worker"]
+    healthcheck: { disable: true }
+
+  seed:
+    <<: *backend
+    command: ["python", "-m", "sentinel.seed"]
+    depends_on:
+      api: { condition: service_healthy }
+    healthcheck: { disable: true }
+    restart: "no"
+
+  web:
+    build: ./frontend
+    ports: ["8080:80"]
+    depends_on: [api]
+    restart: unless-stopped
+
+  # --- optional live demo -------------------------------------------------
+  demo-traffic:
+    profiles: [demo]
+    image: python:3.12-alpine
+    volumes: ["./agent:/agent:ro", "demologs:/logs"]
+    command: ["python", "/agent/demo_traffic.py", "--dir", "/logs"]
+
+  agent:
+    profiles: [demo]
+    image: python:3.12-alpine
+    volumes: ["./agent:/agent:ro", "demologs:/logs:ro"]
+    environment:
+      SENTINEL_URL: http://api:8000
+      SENTINEL_INGEST_TOKEN: ${SENTINEL_INGEST_TOKEN}
+      SENTINEL_HOST: demo-01
+    command: ["python", "/agent/agent.py", "--file", "auth:/logs/auth.log", "--file", "nginx:/logs/access.log"]
+    depends_on: [api, demo-traffic]
+
+volumes:
+  pgdata:
+  redisdata:
+  demologs:
