@@ -1,0 +1,91 @@
+# Sentinel detection rules.
+# Each rule is matched against normalised events (see sentinel/core/parsers.py).
+# Thresholds are deliberately conservative; tune them for your own hosts.
+
+rules:
+  - id: ssh-bruteforce
+    title: SSH brute force
+    severity: high
+    description: Many failed SSH logins from one address in a short time.
+    match: {kind: ssh_failed}
+    group_by: ip
+    threshold: 5
+    window: 60
+    tags: [ssh, credential-access]
+
+  - id: ssh-password-spray
+    title: SSH password spraying
+    severity: high
+    description: One address tries several different usernames, a few attempts each.
+    match: {kind: {in: [ssh_failed, ssh_invalid_user]}}
+    group_by: ip
+    distinct: user
+    threshold: 4
+    window: 300
+    tags: [ssh, credential-access]
+
+  - id: ssh-invalid-user-probe
+    title: Probing for SSH usernames
+    severity: medium
+    description: Repeated attempts with usernames that do not exist on the host.
+    match: {kind: ssh_invalid_user}
+    group_by: ip
+    threshold: 3
+    window: 120
+    tags: [ssh, discovery]
+
+  - id: ssh-success-after-failures
+    title: SSH login succeeded after failures
+    severity: critical
+    description: A successful login from an address that just failed several times. Check whether the account is compromised.
+    type: sequence
+    match: {kind: ssh_failed}
+    then: {kind: ssh_success}
+    group_by: ip
+    threshold: 3
+    window: 600
+    tags: [ssh, initial-access]
+
+  - id: sudo-sensitive-command
+    title: Sensitive sudo command
+    severity: medium
+    description: A root shell, password change or permission change run through sudo.
+    match:
+      kind: sudo
+      command: {regex: '(/bin/(ba|z)?sh\b|\bsu\b|passwd|visudo|chmod\s+(-R\s+)?777|useradd|usermod)'}
+    group_by: user
+    threshold: 1
+    window: 60
+    tags: [privilege-escalation]
+
+  - id: http-scanner
+    title: Web content scanner
+    severity: medium
+    description: Lots of 4xx responses to one client, typical of a directory or vulnerability scanner.
+    match: {source: nginx, status: {gte: 400, lt: 500}}
+    group_by: ip
+    threshold: 20
+    window: 60
+    tags: [web, discovery]
+
+  - id: http-sensitive-path
+    title: Request for a sensitive file
+    severity: low
+    description: A client asked for a file that should never be public (.env, .git, backups, admin panels).
+    match:
+      source: nginx
+      path: {regex: '(\.env\b|/\.git/|\.sql(\.gz)?$|\.bak$|wp-login\.php|/phpmyadmin)'}
+    group_by: ip
+    threshold: 1
+    window: 300
+    tags: [web, discovery]
+
+  - id: http-5xx-spike
+    title: Spike of server errors
+    severity: medium
+    description: The web server returned many 5xx responses in a minute. Possibly an outage or an attack.
+    match: {source: nginx, status: {gte: 500}}
+    group_by: host
+    threshold: 10
+    window: 60
+    tags: [web, availability]
